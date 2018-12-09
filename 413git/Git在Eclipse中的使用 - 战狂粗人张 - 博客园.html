@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="referrer" content="never" />
+<title>Git在Eclipse中的使用 - 战狂粗人张 - 博客园</title>
+<meta property="og:description" content="前言： 1）Git于SVN的不同 Git是分布式数据库，本地创建仓库，即可在本地完成版本控制（等价于SVN在本地安装服务器和客户端，SVN服务器如果在远程，断网情况将无法完成提交及版本维护）。 Git" />
+<link type="text/css" rel="stylesheet" href="/bundles/blog-common.css?v=-duj5vpGTntb85GJoM3iRI972XwWcI-j8zmqDzyfu2w1"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="/skins/Cogitation/bundle-Cogitation.css?v=KxzCsGje7vptXKdp2HZBpXmgRp_h-PvgHFxMy8F9r3o1"/>
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/Cogitation/bundle-Cogitation-mobile.css?v=8j6Kx8lB9U8JmwFiDI1s_wovfxu4g1Yp9_qDjkQUklY1"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/ZJOE80/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/ZJOE80/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/ZJOE80/wlwmanifest.xml"/>
+<script src="//common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">var currentBlogApp = 'ZJOE80', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="/bundles/blog-common.js?v=ZWIrkNiD09PHa1ulf9ZyvZWj5tgvjISWcwFqcBtd1BY1" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="top">
+	
+<div>
+	<table>
+		<tr>
+			<td class="HeaderTitles">
+				<h1 class="HeaderTitle"><a id="Header1_HeaderTitle" class="HeaderMainTitle" href="https://www.cnblogs.com/ZJOE80/">战狂粗人张</a></h1>
+				<p id="tagline"></p>
+			</td>
+		</tr>
+	</table>
+</div>
+<div class="HeaderBar">
+	<table id="HeaderBar" class="HeaderBar" cellpadding="0" cellspacing="0">
+		<tr>
+			<td class="HeaderBarTab" nowrap>
+&nbsp;
+<a id="blog_nav_sitehome" href="https://www.cnblogs.com/">博客园</a> ::
+<a id="blog_nav_myhome" href="https://www.cnblogs.com/ZJOE80/">首页</a> ::
+<a href="http://q.cnblogs.com" class="menu">博问</a> ::
+<a href="http://home.cnblogs.com/ing/" class="menu">闪存</a> ::
+<a id="blog_nav_newpost" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a> ::
+<a id="blog_nav_contact" accesskey="9" rel="nofollow" href="https://msg.cnblogs.com/send/%E6%88%98%E7%8B%82%E7%B2%97%E4%BA%BA%E5%BC%A0">联系</a> ::
+<a id="blog_nav_rss" href="https://www.cnblogs.com/ZJOE80/rss">订阅</a>
+<a id="blog_nav_rss_image" class="XMLLink" href="https://www.cnblogs.com/ZJOE80/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a> ::
+<a id="blog_nav_admin" rel="nofollow" href="https://i.cnblogs.com/">管理</a> ::
+
+</td>
+			<td><img id="Header1_BlueTab" src="/skins/Cogitation/Images/BlueTabRight.gif" align="absmiddle" /></td>
+			<td class="HeaderBarTabBack" nowrap width="100%">
+				<div id="blog_stats">
+<div class="BlogStatsBar">
+	<table class="BlogStatsBar">
+		<tr>
+			<td width="100%">
+			</td>
+			<td class="BlogStatsBar" nowrap>
+				&nbsp;
+				99 
+				随笔&nbsp;::
+				0 文章
+				::
+				1 评论
+				::
+				0 引用
+			</td>
+		</tr>
+	</table>
+</div>
+</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</div>
+<div id="leftmenu">	
+
+	    <div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+		
+<h3>公告</h3>
+<div class="News">
+	<div id="blog-news"></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+		<div id="blog-sidecolumn"></div><script type="text/javascript">loadBlogSideColumn();</script>
+	
+</div>
+<div id="main">
+	
+<div id="post_detail">
+<div class="post">
+	<div class="postTitle">
+		<a id="cb_post_title_url" href="https://www.cnblogs.com/ZJOE80/p/7792177.html">Git在Eclipse中的使用</a>
+	</div>
+	
+	<div class="postText">
+		<div id="cnblogs_post_body" class="blogpost-body"><div><strong>前言：</strong></div>
+<div>1）Git于SVN的不同</div>
+<div>&nbsp; &nbsp; &nbsp;Git是分布式数据库，本地创建仓库，即可在本地完成版本控制（等价于SVN在本地安装服务器和客户端，SVN服务器如果在远程，断网情况将无法完成提交及版本维护）。</div>
+<div>&nbsp; &nbsp; &nbsp;Git协作开发，大家可以互相克隆版本库（相当于SVN下载项目），进行开发，每人都有完整的库（分布式）。通常为了方便，远程还是会建立一个共享库，如GitHub，方便大家同步和共享，不用互相在线，点对点同步修改。</div>
+<div>&nbsp;</div>
+<div>2）Git元素概念</div>
+<div>&nbsp; &nbsp; &nbsp;工作区（Working Directory）：代码开发和修改的区域，Eclipse将Workspace区域的文件显示给用户，用于操作。</div>
+<div>&nbsp; &nbsp; &nbsp;暂存区（Index）：修改不同文件，通过Add to Index，添加到暂存区，暂存该批次的多个修改。</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 注：在最初的Git,文件提交前必须提交到暂存区。EGit这不是必要的,Team =&gt; Commit可以提交unstaged变化。可以和暂存区的状态比较和回退暂存区修改。（状态参见二）</div>
+<div>&nbsp; &nbsp; &nbsp;版本库（Repository）：该到一定程度时，可以提交一批次暂存区的修改，操作后修改提交版本库，并标记版本，是后续分享和回退的批次。</div>
+<div>&nbsp;</div>
+<div>3）文章概述：</div>
+<div>1&gt; EGit 安装配置</div>
+<div>2&gt; EGit 文件状态及图标标志</div>
+<div>2&gt; EGit 本地开发</div>
+<div>&nbsp; &nbsp; &nbsp;创建本地库；提交；回退；创建分支；合并；</div>
+<div>3&gt; EGit 协作开发</div>
+<div>&nbsp; &nbsp; &nbsp;项目推送远程仓库；克隆远程仓库导入项目；提交修改到远程仓库程；更新远程仓库修改到本地；解决冲突。</div>
+<div>4&gt; EGit 视图</div>
+<div>&nbsp; &nbsp; &nbsp;仓库视图；同步视图；历史视图；</div>
+<div><strong>&nbsp;</strong></div>
+<div><strong><br>一 Eclipse 安装EGit</strong></div>
+<div>1）安装<br>
+<div>&nbsp; &nbsp; &nbsp;Eclipse&nbsp;Juno 版后已经集成了EGit，如果使用早些版本，可以通过如下地址安装：http://download.eclipse.org/egit/updates ，选择“Eclipse Git Team Provider”，不需要安装其他插件，直到结束。</div>
+<div><br><img class="magplus" title="点击查看原始大小图片" src="http://dl2.iteye.com/upload/attachment/0101/6813/126dc6eb-b7f8-39e9-8c6b-ee63340cc2e2.png" alt="" width="700" height="588"><br>&nbsp;&nbsp;</div>
+<div>2）配置</div>
+<div><strong>&nbsp;</strong></div>
+<div>&nbsp; &nbsp; &nbsp;EGit每次提交都将包含用户名和邮件，可以通过“Window =&gt; Preferences&nbsp; =&gt;&nbsp; Team =&gt; Git =&gt; Configuration”配置，通过Add Entry 按钮添加信息，</div>
+<div>&nbsp; &nbsp; &nbsp;key ： user.name，value：用户名 ；key：user.emai ， value ： 邮箱，账户信息通常GitHub相同。</div>
+<div>&nbsp;</div>
+<div><br><img class="magplus" title="点击查看原始大小图片" src="http://dl2.iteye.com/upload/attachment/0101/6745/4b4d1f5c-2692-32cd-8799-edc04c205010.png" alt="" width="700" height="526"><br>&nbsp;</div>
+<div><strong>二 EGit文件状态及图标展示</strong></div>
+<div>&nbsp;</div>
+<div>EGit会出现如下图标，其对应状态及意义如下：</div>
+<div>&nbsp;<br><img src="http://dl2.iteye.com/upload/attachment/0101/6747/9d92571c-7beb-3c0c-b16d-2c3ec875ea1b.png" alt=""><br>&nbsp;</div>
+<div><img alt=""></div>
+<div>&nbsp;</div>
+<div>1）忽略[ ignored&nbsp;]：仓库认为该文件不存在（如bin目录，不需要关注）。通过右键Team =&gt; Ignore 添加忽略文件</div>
+<div><br>2）未跟踪[ untracked ]：仓库未跟踪，通常是新建的文件，要接入版本管理可以通过“Add to Index”或直接“Commit”操作。<br><br>3）已跟踪[ tracked ]：文件已被仓库记录。<br><br>4）已添加[ added ]：untracked&nbsp;状态的文件，通过“Add to Index”被仓库已知，但是没有“Commit”，“Commit”后可变为“已跟踪[ tracked ]”状态。</div>
+<div><br>5）已删除[ removed ]：从工作区中删除文件，文件会消失，也就没有图标出现，下一次提交时被删除。Team =&gt; Untrack可以触发本图标，在“Commit”对话框中可以看到图标。<br><br>6）已修改[&nbsp;dirty ]:&nbsp;修改“已跟踪[ tracked ]”的文件，未添加到暂存区Index（未“Add to Index”或“Commit”）的文件，标志与本地库不一致。</div>
+<div><br>7）已暂存[&nbsp;staged&nbsp;]：修改“已跟踪[ tracked ]”的文件，并添加到暂存区Index（即执行“Add to Index”）；</div>
+<div>&nbsp;</div>
+<div>
+<div>8）冲突[&nbsp;conflict ] : 进行Marge合并操作会引起冲突，需要人工解决并添加到索引区修改状态。</div>
+<div>&nbsp;</div>
+
+
+9）已部分暂存[&nbsp;partially-staged&nbsp;]：修改“已跟踪[ tracked ]”的文件，部分修改已添加暂存区Index，部分未添加。</div>
+<div>&nbsp; &nbsp; &nbsp;相当于：已跟踪的文件修改，Add to Index ，Commit前又修改了文件。</div>
+<div><br>10）假设有效[&nbsp;assume-valid&nbsp;]：一些修改未被Git检查。右键Team =&gt; Assume unchanged可产生该状态。</div>
+<div><strong>&nbsp;</strong></div>
+<div><strong>三 EGit使用</strong></div>
+<div><strong>（一）创建本地仓库</strong></div>
+<div><strong>&nbsp;</strong></div>
+<div>Git优势是容易创建本地仓库，将工作本地化，待需要的时候推送到远程仓库，因此所有修改可以在本地版本化。<br>方法：本地见一个工程，添加一些文件，然后在工程上右键Team =&gt; Share Project ，点击 create按钮创建仓库。</div>
+<div>&nbsp;</div>
+<div><br><img class="magplus" title="点击查看原始大小图片" src="http://dl2.iteye.com/upload/attachment/0101/6749/05d22491-7835-30c3-9858-f00f41d70193.png" alt="" width="700" height="613"><br>&nbsp;</div>
+<div>&nbsp;</div>
+<div>尽管我们创建了本地仓库，并share 项目，但库是空的。我们可以向工程添加文件，并提交到本地仓库。</div>
+<div>&nbsp;<br><img src="http://dl2.iteye.com/upload/attachment/0101/6751/bd48b24c-12a6-3e14-b9d1-92545a8b12df.png" alt=""><br>&nbsp;<br><img src="http://dl2.iteye.com/upload/attachment/0101/6753/cda94bf3-22ce-3f33-ba3e-436f5c5927d0.png" alt=""><br>&nbsp;</div>
+<div><img alt=""></div>
+<div><img alt=""></div>
+<div><strong>（二） 提交（Commit）</strong></div>
+<div><strong>1）创建文件提交</strong></div>
+<div>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;创建新文件，由“？”标记，想提交倒本地仓库进行版本管理，需要右键Team =&gt; Add to Index,操作后“？”变成“+”。然后项目右键Team =&gt; Commit，输入本次提交信息（注：输入的信息会展示在历史页面），成功后标记由“+”变成“仓库”符号。</div>
+<div>&nbsp; &nbsp;&nbsp;<br><img src="http://dl2.iteye.com/upload/attachment/0101/6755/9f0a4a1f-ee6b-3ea6-a1ce-ddad54d98a6d.png" alt=""><br>&nbsp;&nbsp;<img alt="">=And to Index=&gt;<img alt=""></div>
+<div><br><img src="http://dl2.iteye.com/upload/attachment/0101/6757/d8c25293-ba76-3957-a73a-f5f3f4a6d69d.png" alt=""><br>&nbsp;</div>
+<div>=commit=&gt;<img alt=""></div>
+<div>&nbsp;<br><img src="http://dl2.iteye.com/upload/attachment/0101/6759/e48edfb5-2288-3d34-8e8c-2167c22915ce.png" alt=""></div>
+<div>===》<img alt=""></div>
+<div><br><img src="http://dl2.iteye.com/upload/attachment/0101/6761/d06e4d75-82c3-3e99-91f8-13ece7f1cf85.png" alt=""><br>&nbsp;</div>
+<div><strong>2）产生修改提交</strong></div>
+<div><strong>&nbsp;</strong></div>
+<div>修改项目文件，文件会由“&gt;”标记，如果需要同步到本地库，我们需要提交，过程同上commit</div>
+<div><img alt=""></div>
+<div>&nbsp;<br><img src="http://dl2.iteye.com/upload/attachment/0101/6763/20dfacfa-190c-32e8-bd32-0abea00035a5.png" alt=""><br>&nbsp;</div>
+<div>&nbsp;</div>
+<div><strong>（三） 撤销修改</strong></div>
+<div>&nbsp;</div>
+<div><strong>方法1：通过和上一次暂存区（Index）文件比较——用于单个文件，一般文件状态为“已部分暂存[&nbsp;partially-staged&nbsp;]”</strong></div>
+<div>
+<div>&nbsp;&nbsp;文件上右键Compare With =&gt; Git index</div>
+<blockquote>
+<div>如果想修改暂存区Index，点击Copy All Non-Conflicting Changes from Right to Left-button，修改后文件变为“已暂存[&nbsp;staged&nbsp;]”。</div>
+<div>如果向回退上次Add to Index的情况，点击Copy All from Left to Right，修改后文件变为“已暂存[&nbsp;staged&nbsp;]”。</div>
+<div>&nbsp;</div>
+
+
+</blockquote>
+
+
+</div>
+<div><br><img class="magplus" title="点击查看原始大小图片" src="http://dl2.iteye.com/upload/attachment/0101/6765/c36e74bf-3601-3979-9aeb-51a62666b02a.png" alt="" width="700" height="372"><br>&nbsp;</div>
+<div><strong>方法1：通过和上一次Commit版本比较回退——用于单文件</strong></div>
+<div><strong>&nbsp;</strong></div>
+<div>&nbsp; &nbsp; &nbsp;文件上右键Compare With =&gt; HEAD Revision</div>
+
+
+</div>
+<blockquote>
+<div>如果想完全恢复文件，点击Copy All Non-Conflicting Changes from Right to Left-button</div>
+<div>如果向回退某几行，选择单独每一行，点击the Copy Current Change from Right to Left button。</div>
+
+
+</blockquote>
+<div>&nbsp;</div>
+<div><br><img class="magplus" title="点击查看原始大小图片" src="http://dl2.iteye.com/upload/attachment/0101/6767/5a3c42d7-bf67-3950-88ad-0ecb0e4212a4.png" alt="" width="700" height="376"><br>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;手工完成修改合并后再提及。</div>
+<div>&nbsp;</div>
+<div><strong>方法3：通过重置回退（Revert via Reset）——用于整个工程</strong></div>
+<div><strong>&nbsp;</strong></div>
+<div>&nbsp; &nbsp; 在项目上回退所有修改，项目上右键Team =&gt; Reset…；选择要回退到的分支（如果没有创建分支，只有有一个Master），Reset Type 选择Hard，点击“Reset”确认。所有修改回退到该分支的最后一次提交，包括工作区所有完成的修改。</div>
+<div>&nbsp;</div>
+<div><img alt=""></div>
+<div>&nbsp;<br><img src="http://dl2.iteye.com/upload/attachment/0101/6769/b73af982-3842-37d8-9c66-45783f70dfec.png" alt=""><br>&nbsp;</div>
+<div>注：重置类型（Reset Type）：</div>
+<div>1）Soft：只回退commit信息（HEAD 指针），不回退暂存区（Index）和工作区（Working Directory 文件）源码，如果需要可再次提交，回到上次commit情况。</div>
+<div>&nbsp;</div>
+<div>2）Mixed：回退commit信息（HEAD 指针）和暂存区（Index），只保留工作区（Working Directory 文件）源码。</div>
+<div>&nbsp;</div>
+<div>3）Hard：所有更改都将恢复到所选分支/标记/Commit版本。工作区（Working Directory 文件）源码会变为上一个Commit版本的内容，未提交的更改都将丢失，因此该操作必须确认。</div>
+<div><strong>&nbsp;</strong></div>
+<div><strong>（三） 创建分支</strong></div>
+<div>项目上右键Team =&gt; Switch to =&gt; New Branch… ，选择一个新分支的来源，点击创建分支，输入分支名。<br>新分支会出现在分支选择窗口，如果向检出一个新创建的分支，选择然后点击checkout</div>
+<div><br><img src="http://dl2.iteye.com/upload/attachment/0101/6771/1d25b0e0-197c-38b3-a2f5-c19e6dd6f239.png" alt=""><br>&nbsp;</div>
+<div><img alt=""></div>
+<div><br><img src="http://dl2.iteye.com/upload/attachment/0101/6773/4d3c8d1b-bddf-3ffb-b933-ba658ef51658.png" alt=""><br>&nbsp;<img alt="">&nbsp;</div>
+<div>》》》》》》》<img alt=""></div>
+<div><br><img src="http://dl2.iteye.com/upload/attachment/0101/6775/b8f7eef1-02fc-328c-baf4-c82c98c77164.png" alt=""><br>&nbsp;</div>
+<div>注：</div>
+<div>&nbsp; &nbsp; &nbsp;Git的一大优势是很容易创建分支，根据需要可以快速创建Bug修复分支，新功能分支，几条分支独立开发，最后合并到主分支。</div>
+<div><strong><br></strong>&nbsp; &nbsp; &nbsp;原则：<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; a）master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面开发；<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; b）开发都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c）每个开发人员都在自己dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。</div>
+<div>&nbsp;</div>
+<div>&nbsp;<br><img src="http://dl2.iteye.com/upload/attachment/0101/6777/143a32c0-59c6-34db-8e7c-5c9b8e60b77b.png" alt=""><br>&nbsp; &nbsp; &nbsp;&nbsp;<img alt=""></div>
+<div><strong>&nbsp;</strong></div>
+<div><strong>（四）合并和解决冲突</strong></div>
+<div><strong>&nbsp;1）合并</strong></div>
+<div>&nbsp; &nbsp; &nbsp;将一个分支合并到另一个分支，首先切换到要合并的分支，项目邮件Team =&gt; Switch to =&gt; 分支名（或仓库视图，Branches =&gt; Local =&gt;指定分支右键Checkout），右键 Team =&gt; Merge…&nbsp;<strong>选择要合并到当前分支的分支</strong>，点击Merge。</div>
+<div>&nbsp; &nbsp; &nbsp;合并开始并弹出结果，结果有如下几种：Already-up-to-date, Fast-forward, Merged, Conflicting, Failed.</div>
+<div><br><img src="http://dl2.iteye.com/upload/attachment/0101/6779/0760f787-9c97-3059-9a18-ed1e366bf01a.png" alt=""><br>&nbsp;</div>
+<div><img alt=""></div>
+<div><strong>&nbsp;2）解决冲突</strong></div>
+<div><strong>&nbsp; &nbsp; &nbsp;</strong>冲突需要手动解决。打开冲突文件，找到冲突修改标志“&lt;&lt;&lt;&lt;&lt;&lt;&lt;”，手动合并后后，需要通知Git冲突解决，<strong>Add to index 和commit 完成合并<br></strong>&nbsp; &nbsp; &nbsp;<br><img class="magplus" title="点击查看原始大小图片" src="http://dl2.iteye.com/upload/attachment/0101/6781/b58811de-e1c5-3059-bfff-f56b3c07049e.png" alt="" width="700" height="267"><br>&nbsp;</div>
+<div>&nbsp;</div>
+<div><strong>&nbsp;</strong></div>
+<div><strong>四 远程仓库</strong></div>
+<div><strong>&nbsp; &nbsp; &nbsp;</strong>远程仓库一般用于多人共享，GitHub就提供免费的共享空间，注册帐号，在GitHub上创建仓库，就可以推送项目。</div>
+<div>&nbsp;</div>
+<div><strong>（一）项目提交远程仓库</strong></div>
+<div>1）GitHub上创建项目</div>
+<div>
+<div><br><img class="magplus" title="点击查看原始大小图片" src="http://dl2.iteye.com/upload/attachment/0101/6783/99c8f7a1-5ddb-38a2-b62a-e1df89472f98.png" alt="" width="700" height="312"><br>&nbsp;</div>
+<div>2）项目：右键 Team =&gt; Remote =&gt; Push，填写远程仓库信息</div>
+<div><br><img src="http://dl2.iteye.com/upload/attachment/0101/6785/5b7cac21-a0c4-3fe3-acd5-64c75b464965.png" alt=""><br>&nbsp;</div>
+<div><img alt=""></div>
+<div>3）选择推送的分支信息，这里由于建立了master和dev分支，选择并通过"Add Spec"按钮添加，选中复选框“Force Update”，已避免冲突，否则需要现更新再推送。</div>
+<div><img alt=""></div>
+<div><br><img src="http://dl2.iteye.com/upload/attachment/0101/6787/75fa2f10-0de0-363d-a873-930e011ebaa5.png" alt=""><br>&nbsp;</div>
+<div>4）由于Force Update所以需要确认。</div>
+<div><br><img src="http://dl2.iteye.com/upload/attachment/0101/6789/0b308bcb-2a77-394d-8309-25c6e663ae2f.png" alt=""><br>&nbsp;</div>
+<div><img alt=""></div>
+<div>5）推送完成</div>
+<div><br><img class="magplus" title="点击查看原始大小图片" src="http://dl2.iteye.com/upload/attachment/0101/6791/c7bdaa9a-6f00-33d5-8c67-6a78618f6bbb.png" alt="" width="700" height="218"><br>&nbsp;</div>
+
+
+</div>
+<div><strong>（二）克隆远程仓库导入项目</strong></div>
+<div>1）File =&gt; Import =&gt; Git =&gt; Project from Git&nbsp;</div>
+<div><br><img src="http://dl2.iteye.com/upload/attachment/0101/6793/8d6cbc02-fe38-39b5-88e7-da916327f2b6.png" alt=""><br>&nbsp;</div>
+<div><img alt=""></div>
+<div>2）仓库来源选择：Clone from uri 填写账户信息</div>
+<div><br><img src="http://dl2.iteye.com/upload/attachment/0101/6795/31aba8b5-3638-3921-9a3c-fc3647d7b7b1.png" alt=""><br>&nbsp;</div>
+<div><img alt=""></div>
+<div>3）分支选择也没：选择要导入的分支</div>
+<div><br><img src="http://dl2.iteye.com/upload/attachment/0101/6797/4dd5b3ea-6851-320b-820d-91ed6ac29ae6.png" alt=""><br>&nbsp;</div>
+<div><img alt=""></div>
+<div>4）本地路径指定地址</div>
+<div><br><img src="http://dl2.iteye.com/upload/attachment/0101/6799/ba4a133f-66d8-388a-a970-fb54d2c2127d.png" alt=""><br>&nbsp;</div>
+<div><img alt=""></div>
+<div>5）完成后本地仓库出现，克隆完成，可以直接选择“Import as existing project”导入</div>
+<div><br><img class="magplus" title="点击查看原始大小图片" src="http://dl2.iteye.com/upload/attachment/0101/6801/373094d9-95c4-3d61-bffc-4bf8be0c06ff.png" alt="" width="700" height="221"><br>&nbsp;</div>
+<div>6）导入</div>
+<div><br><img src="http://dl2.iteye.com/upload/attachment/0101/6803/eb67f693-f812-3962-a481-149ea57120fa.png" alt=""><br>&nbsp;</div>
+<div><img alt=""></div>
+<div><strong>（三）提交修改到远程仓库程</strong></div>
+<div><strong>&nbsp;</strong></div>
+<div>方法1：正常的提交操作： &nbsp; &nbsp;&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;项目右键 =&gt; Team =&gt; Remote =&gt; Push 可以选择不同的远程仓库进行推送。包括其他同事的仓库推送。</div>
+<div>&nbsp;</div>
+<div>方法2：向默认远程仓库推送：</div>
+<div>&nbsp; &nbsp; &nbsp;&nbsp;项目右键 =&gt; Team =&gt; Remote =&gt;Push to upstream</div>
+<div>&nbsp;</div>
+<div><strong>（四）更新远程仓库修改到本地</strong></div>
+<div>方法1：&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;1）项目右键 =&gt; Team =&gt; Remote =&gt;Fetch form upstream</div>
+<div>&nbsp; &nbsp; &nbsp;注：该操作首先将远程的分支同步到本地的origin/master分支</div>
+<div>&nbsp; &nbsp; &nbsp;2）项目右键 =&gt; Team =&gt; Marge</div>
+<div>&nbsp; &nbsp; &nbsp;注：合并，可以查看和本地是否有冲突，可以通过合并解决冲突。</div>
+<div>&nbsp;</div>
+<div>方法2： 项目右键&nbsp;=&gt; Team =&gt; Pull</div>
+<div>&nbsp; &nbsp; &nbsp;注：Pull 合并了Fetch from upstream 和marge；强制Marge，但上面的方法更安全。</div>
+<div><strong>&nbsp;</strong></div>
+<div><img alt=""></div>
+<div><strong>五 EGit 视图</strong></div>
+<div><strong>（一）仓库视图</strong></div>
+<div>&nbsp; &nbsp; &nbsp;库视图是有用的在处理分支/标记和执行操作,以及处理远程存储库,让你所了解概况。<br>&nbsp; &nbsp; &nbsp;右键Team =&gt; Show in Repositories View可以看到</div>
+<div><img alt=""></div>
+<div>&nbsp;<br><img src="http://dl2.iteye.com/upload/attachment/0101/6807/c99c508b-6dcb-33c8-a86a-958e37c7e994.png" alt=""><br>&nbsp;</div>
+<div><strong>（二）同步视图</strong></div>
+<div>&nbsp; &nbsp; &nbsp;工作区和本地库的对比或者当前分支和其他分支的对比是通过同步操作完成的。<br>&nbsp; &nbsp; &nbsp;右键Team =&gt; Sychronize Workspace ，工作区会和当前分支比较并展示出不同。<br>&nbsp; &nbsp; &nbsp;右键Team =&gt; Advanced =&gt; Synchronize… 可以查看当前分支和其他分支的比较。这包括所有本地未提交的变化。</div>
+<div><br><br>&nbsp;<br><img src="http://dl2.iteye.com/upload/attachment/0101/6809/0b4dc8b4-0295-3257-a803-f0217baeeee7.png" alt=""><br>&nbsp;</div>
+<div><img alt=""></div>
+<div><strong>（三）历史视图</strong></div>
+<div>&nbsp; &nbsp; &nbsp;查看已共享文件的历史，右键Team =&gt; Show in History.</div>
+<div>&nbsp; &nbsp; &nbsp;可以进行比较，标签，回退。</div>
+<div><br><img class="magplus" title="点击查看原始大小图片" src="http://dl2.iteye.com/upload/attachment/0101/6811/67094203-6447-3660-8c81-d4d0206ba6d8.png" alt="" width="700" height="204"><br>&nbsp;</div></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+
+
+	</div>
+	
+	<div class="postfoot">
+		posted on <span id="post-date">2017-11-06 11:03</span> <a href='https://www.cnblogs.com/ZJOE80/'>战狂粗人张</a> 阅读(<span id="post_view_count">...</span>) 评论(<span id="post_comment_count">...</span>)  <a href ="https://i.cnblogs.com/EditPosts.aspx?postid=7792177" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(7792177);return false;">收藏</a>
+	</div>
+</div>
+<script type="text/javascript">var allowComments=true,cb_blogId=272680,cb_entryId=7792177,cb_blogApp=currentBlogApp,cb_blogUserGuid='324a8dbf-37e8-e511-9fc1-ac853d9f53cc',cb_entryCreatedDate='2017/11/6 11:03:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id='comment_form' class='commentform'>
+<a name='commentform'></a>
+<div id='divCommentShow'></div>
+<div id='comment_nav'><span id='span_refresh_tips'></span><a href='javascript:void(0);' onclick='return RefreshCommentList();' id='lnk_RefreshComments' runat='server' clientidmode='Static'>刷新评论</a><a href='#' onclick='return RefreshPage();'>刷新页面</a><a href='#top'>返回顶部</a></div>
+<div id='comment_form_container'></div>
+<div class='ad_text_commentbox' id='ad_text_under_commentbox'></div>
+<div id='ad_t2'></div>
+<div id='opt_under_post'></div>
+<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+<script>
+  googletag.cmd.push(function() {
+        googletag.defineSlot('/1090369/C1', [300, 250], 'div-gpt-ad-1546353474406-0').addService(googletag.pubads());
+        googletag.defineSlot('/1090369/C2', [468, 60], 'div-gpt-ad-1539008685004-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+  });
+</script>
+<div id='cnblogs_c1' class='c_ad_block'>
+<div id='div-gpt-ad-1546353474406-0' style='height:250px; width:300px;'>
+<script>
+if(canShowAdsense()) {
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1546353474406-0'); });
+}
+</script>
+</div>
+</div>
+<div id='under_post_news'></div>
+<div id='cnblogs_c2' class='c_ad_block'>
+    <div id='div-gpt-ad-1539008685004-0' style='height:60px; width:468px;'>
+    <script>
+    if(canShowAdsense()) {
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1539008685004-0'); });
+    }
+    </script>
+    </div>
+</div>
+<div id='under_post_kb'></div>
+<div id='HistoryToday' class='c_ad_block'></div>
+<script type='text/javascript'>
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+</div>
+<div class="footer">
+
+<p id="footer">
+	Powered by: 
+	<br />
+	
+	<a id="Footer1_Hyperlink3" NAME="Hyperlink1" href="https://www.cnblogs.com/" style="font-family:Verdana;font-size:12px;">博客园</a>
+	<br />
+	Copyright &copy; 战狂粗人张
+</p>
+</div>
+</body>
+</html>
